@@ -1,0 +1,9 @@
+model User {
+  id       Int           @id @default(autoincrement())
+  nickname String        @unique
+  email    String        @unique
+  password String
+
+  sentMessages     ChatHistory[] @relation("SenderNickname")
+  receivedMessages ChatHistory[] @relation("ReceiverNickname")
+}

@@ -1,0 +1,11 @@
+model ChatHistory {
+  id         Int      @id @default(autoincrement())
+  message    String
+  sender     String
+  receiver   String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+
+  senderUser   User @relation("SenderNickname", fields: [sender], references: [nickname])
+  receiverUser User @relation("ReceiverNickname", fields: [receiver], references: [nickname])
+}
